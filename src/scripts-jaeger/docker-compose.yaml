@@ -1,0 +1,36 @@
+# Exemplo utilizado como base para a criacao deste script: https://github.com/grafana/tempo/blob/main/example/docker-compose/otel-collector/readme.md
+
+services:
+
+  # And put them in an OTEL collector pipeline...
+  otel-collector:
+    image: otel/opentelemetry-collector:0.86.0
+    command: [ "--config=/etc/otel-collector.yaml" ]
+    volumes:
+      - ./otel-collector.yaml:/etc/otel-collector.yaml
+
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.58
+    ports:
+      - "4317:4317"
+      - "16686:16686"
+
+  postgres:
+    image: postgres
+    volumes:
+      - ./BaseContagemPostgreSql.sql:/docker-entrypoint-initdb.d/1-basecontagem.sql
+    environment:
+      POSTGRES_PASSWORD: "Postgres2025!"
+    ports:
+      - "5432:5432"
+
+  mysql:
+    image: mysql:9.0
+    volumes:
+      - ./BaseContagemMySql.sql:/docker-entrypoint-initdb.d/1-basecontagem.sql
+    environment:
+      MYSQL_ROOT_PASSWORD: "MySql2025!"
+      MYSQL_DATABASE: "basecontagem"
+    ports:
+      - "3306:3306"
