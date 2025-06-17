@@ -3,7 +3,7 @@ Exemplo de API REST criada com o .NET 9 + ASP.NET Core e utilizando Distributed 
 
 Aplicações que consomem este projeto:
 - [**Saudações (Node.js)**](https://github.com/renatogroffe/nodejs-otel-jaeger_apisaudacoes)
-- [**Consumer das APIs (Java + Spring + Apache Camel)**](https://github.com/renatogroffe/nodejs-otel-jaeger_apisaudacoes)
+- [**Consumer das APIs (Java + Spring + Apache Camel)**](https://github.com/renatogroffe/java-spring-camel-otel-jaeger-postgres-mysql_consumoapis)
 
 Traces gerados durante testes no dashboard do Jaeger:
 
